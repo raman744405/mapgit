@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		#map {
+			height: 100%;
+		}
+		/* Optional: Makes the sample page fill the window. */
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	var map;
+	var aboutme = [
+    {"park":"Yellowstone","coords":[44.4280,-110.5885]},
+    {"park":"Glacier","coords":[48.7596, -113.7870]},
+    {"First":"Telangana","coords":[16.562493,78.490525]},
+    {"Second":"petersburg","coords":[38.487995,-87.374425]},
+    {"Third":"Sinana Keri, Kumharsain, Himachal Pradesh","coords":[31.287940,77.436299]},
+    {"fourth":"petersburg","coords":[38.487995,-87.374425]},
+    {"fifth":"Wau South Sudan","coords":[6.937333,27.536250]},
+    {"sixth":"Garmaw Chaghcharan Afghanistan","coords":[33.952474,65.136991]},
+
+
+    
+
+
+
+    
+    ];
+
+
+	function initMap() {
+		map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 4,
+			center: new google.maps.LatLng(44, -110),
+			mapTypeId: 'terrain'
+		});
+
+		mashParks(aboutme);
+	}
+
+	function mashParks(results) {
+	for (var i = 0; i < results.length; i++) {
+		var coords = results[i].coords;
+		var latLng = new google.maps.LatLng(coords[0], coords[1]);
+		var marker = new google.maps.Marker({
+			position: latLng,
+			map: map,
+			label:results[i].park
+			});
+		}
+	}
+
+
+
+</script>
+<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTM5RKrtCLpZAj5HU3K3cTvFNB240NsBg&callback=initMap">
+</script>
+</body>
+</html>
